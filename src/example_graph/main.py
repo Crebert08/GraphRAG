@@ -29,7 +29,7 @@ def ingest() -> None:
 @click.option("--verbose", is_flag=True)
 def chat(verbose: bool) -> None:
     vector_store, graph_store, conn = init_stores(ns=ns, db=db)
-    chat_model = ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=1)
+    chat_model = ChatGoogleGenerativeAI(model="gemini-2.0-flash-lite", temperature=1)
 
     def query_logger(q: str, results: int) -> None:
         conn.insert("generated_query", {"query": q, "results": results})
